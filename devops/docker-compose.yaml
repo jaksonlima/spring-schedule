@@ -1,0 +1,22 @@
+version: "3.1"
+
+services:
+  db:
+    image: postgres:14.3-alpine
+    container_name: db-jwsystem
+    restart: always
+    tty: true
+    volumes:
+      - ./.postgresql/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: jwsystem
+      POSTGRES_DB: jws
+    ports:
+      - 5432:5432
+    networks:
+      - net-jwsystem
+
+networks:
+  net-jwsystem:
+    driver: "bridge"

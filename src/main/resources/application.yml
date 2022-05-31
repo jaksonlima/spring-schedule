@@ -1,0 +1,21 @@
+multitenancy:
+  master:
+    datasource:
+      url: jdbc:postgresql://localhost:5432/jws
+      username: root
+      password: jwsystem
+      tlsEnabled: true
+      minimum-idle: 10 # The minimum number of established connections that should be kept in the pool at all times.
+      maximum-pool-size: 50 # The maximum number of connections that should be kept in the pool at all times.
+      idle-timeout: 30000 # The maximum amount of time in milliseconds that a connection is allowed to sit idle in connection pool
+      max-lifetime: 60000 # The maximum lifetime of a connection in the pool
+  tenant:
+    datasource:
+      url: ${multitenancy.master.datasource.url}
+      username: root
+      password: jwsystem
+      tlsEnabled: true
+      minimum-idle: 10 # The minimum number of established connections that should be kept in the pool at all times.
+      maximum-pool-size: 50 # The maximum number of connections that should be kept in the pool at all times.
+      idle-timeout: 30000 # The maximum amount of time in milliseconds that a connection is allowed to sit idle in connection pool
+      max-lifetime: 60000 # The maximum lifetime of a connection in the pool
